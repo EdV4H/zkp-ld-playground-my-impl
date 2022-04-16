@@ -12,3 +12,6 @@ const Template: ComponentStory<typeof ZkpLdPgAppBar> = (args) => (
 );
 
 export const Default = Template.bind({});
+Default.args = {
+  theme: "light",
+};

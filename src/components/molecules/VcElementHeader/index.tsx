@@ -1,5 +1,12 @@
 import { Archive, Create, GppGood, PhoneAndroid } from "@mui/icons-material";
-import { Avatar, Badge, Button, Toolbar, Typography } from "@mui/material";
+import {
+  Avatar,
+  Badge,
+  Button,
+  Toolbar,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 
 import { VerifiableCredentialsElements } from "../../../types/verifiableCredentials";
 
@@ -44,19 +51,21 @@ const VcElementHeader: React.FC<Props> = ({
 }) => {
   return (
     <Toolbar>
-      <Badge
-        badgeContent={badgeCount}
-        color="primary"
-        overlap="circular"
-        sx={{ mr: 2 }}
-      >
-        <Avatar
-          area-aria-label={elementType}
-          sx={{ backgroundColor: elementType + ".main" }}
+      <Tooltip title={VcElementLabelMap[elementType]}>
+        <Badge
+          badgeContent={badgeCount}
+          color="primary"
+          overlap="circular"
+          sx={{ mr: 2 }}
         >
-          {VcElementIconMap[elementType]}
-        </Avatar>
-      </Badge>
+          <Avatar
+            area-aria-label={elementType}
+            sx={{ backgroundColor: elementType + ".main" }}
+          >
+            {VcElementIconMap[elementType]}
+          </Avatar>
+        </Badge>
+      </Tooltip>
       <Typography sx={{ color: elementType + ".main", flexGrow: 1 }}>
         {VcElementLabelMap[elementType]}
       </Typography>
