@@ -1,0 +1,6 @@
+build/
+public/
+**/mode_modules/
+*.congig.js
+.*lintrc.js
+vite.config.ts
