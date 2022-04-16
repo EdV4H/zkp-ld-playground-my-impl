@@ -1,4 +1,4 @@
-const VcElementHeader = () => {
+const VcElementHeader: React.VFC = () => {
   return <div>header</div>;
 };
 

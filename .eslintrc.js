@@ -11,6 +11,7 @@ const config = {
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",
+    "plugin:storybook/recommended",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -49,11 +50,29 @@ const config = {
           "object",
           "type",
         ],
-        alphabetize: { order: "asc", caseInsensitive: true },
+        alphabetize: {
+          order: "asc",
+          caseInsensitive: true,
+        },
         "newlines-between": "always",
       },
     ],
   },
+  overrides: [
+    {
+      files: ["**/*.stories.*"],
+      rules: {
+        // default rule (made by storybook CLI)
+        "import/no-anonymous-default-export": "off",
+        // allow importing @storybook/testing-library
+        "import/no-extraneous-dependencies": [
+          "error",
+          { devDependencies: true },
+        ],
+        // allow awaiting userEvent
+        "@typescript-eslint/await-thenable": "off",
+      },
+    },
+  ],
 };
-
 module.exports = config;

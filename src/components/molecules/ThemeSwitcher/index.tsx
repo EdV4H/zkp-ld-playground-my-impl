@@ -48,7 +48,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-const ThemeSwitcher = () => {
+const ThemeSwitcher: React.VFC = () => {
   return (
     <FormControl>
       <MaterialUISwitch sx={{ m: 1 }} defaultChecked />
