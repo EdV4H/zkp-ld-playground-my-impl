@@ -31,6 +31,8 @@ const config = {
     // correct: <tag />
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md
     "react/self-closing-comp": "error",
+    // prop types are statically checked by TypeScript
+    "react/prop-types": "off",
     "react/function-component-definition": [
       "error",
       {
