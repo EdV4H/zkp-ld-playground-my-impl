@@ -1,13 +1,12 @@
 import "./App.css";
-import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 
 import ZkpLdPgAppBar from "./components/organisms/ZkpLdPgAppBar";
-
-const theme = createTheme({});
+import { lightTheme } from "./theme";
 
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={lightTheme}>
       <CssBaseline />
       <ZkpLdPgAppBar />
     </ThemeProvider>

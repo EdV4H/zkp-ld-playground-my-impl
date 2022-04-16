@@ -48,10 +48,21 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-const ThemeSwitcher: React.VFC = () => {
+type Props = {
+  theme: "light" | "dark";
+  onChange: (theme: "light" | "dark") => void;
+};
+
+const ThemeSwitcher: React.FC<Props> = ({ theme, onChange }) => {
   return (
     <FormControl>
-      <MaterialUISwitch sx={{ m: 1 }} defaultChecked />
+      <MaterialUISwitch
+        checked={theme === "dark"}
+        onChange={(e, checked) => {
+          onChange(checked ? "dark" : "light");
+        }}
+        sx={{ m: 1 }}
+      />
     </FormControl>
   );
 };

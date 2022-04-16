@@ -3,7 +3,12 @@ import { AppBar, Toolbar, Tooltip, Typography } from "@mui/material";
 
 import { ThemeSwitcher } from "../../molecules";
 
-const ZkpLdPgAppBar = () => {
+type Props = {
+  theme: "light" | "dark";
+  onThemeChange: (theme: "light" | "dark") => void;
+};
+
+const ZkpLdPgAppBar: React.FC<Props> = ({ theme, onThemeChange }) => {
   return (
     <AppBar position="static" color="transparent" elevation={0}>
       <Toolbar>
@@ -13,7 +18,7 @@ const ZkpLdPgAppBar = () => {
             <Warning color="warning" />
           </Tooltip>
         </Typography>
-        <ThemeSwitcher />
+        <ThemeSwitcher theme={theme} onChange={onThemeChange} />
       </Toolbar>
     </AppBar>
   );
