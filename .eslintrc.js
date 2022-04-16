@@ -20,8 +20,9 @@ const config = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react", "@typescript-eslint", "import"],
+  plugins: ["react", "@typescript-eslint", "import", "unused-imports"],
   rules: {
+    "unused-imports/no-unused-imports": "error",
     // import 'jsx' is not required after react 17.0.0
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/react-in-jsx-scope.md
     "react/react-in-jsx-scope": "off",
