@@ -20,7 +20,7 @@ const config = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react", "@typescript-eslint"],
+  plugins: ["react", "@typescript-eslint", "import"],
   rules: {
     // import 'jsx' is not required after react 17.0.0
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/react-in-jsx-scope.md
@@ -34,6 +34,22 @@ const config = {
       {
         namedComponents: "arrow-function",
         unnamedComponents: "arrow-function",
+      },
+    ],
+    "import/order": [
+      "error",
+      {
+        groups: [
+          "builtin",
+          "external",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type",
+        ],
+        alphabetize: { order: "asc", caseInsensitive: true },
+        "newlines-between": "always",
       },
     ],
   },
