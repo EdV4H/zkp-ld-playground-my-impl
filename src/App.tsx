@@ -1,30 +1,30 @@
 import "./App.css";
-import Editor from "@monaco-editor/react";
-import { CssBaseline, Grid, ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import { useState } from "react";
 
-import VcElements from "./components/organisms/VcElements";
-import ZkpLdPgAppBar from "./components/organisms/ZkpLdPgAppBar";
+import ZkpLdPlayground from "./components/templates/ZkpLdPlayground";
+import useIssuer from "./hooks/useIssuer";
 import { darkTheme, lightTheme } from "./theme";
 
 const App = () => {
   const [theme, setTheme] = useState<"light" | "dark">("light");
+  const issuer = useIssuer();
 
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <CssBaseline />
-      <ZkpLdPgAppBar
+      <ZkpLdPlayground
         theme={theme}
         onThemeChange={(newTheme) => setTheme(newTheme)}
+        exampleDocuments={issuer.exampleDocuments}
+        exampleKeys={issuer.exampleKeys}
+        inputDocument={issuer.inputDocument}
+        issuerKey={issuer.issuerKey}
+        onSelectInputDocument={issuer.handleInputDocumentSelect}
+        onChangeInputDocument={issuer.handleInputDocumentChange}
+        onSelectIssuerKey={issuer.handleIssuerKeySelect}
+        onChangeIssuerKey={issuer.handleIssuerKeyChange}
       />
-      <Grid container spacing={1}>
-        <Grid item xs={7}>
-          <VcElements />
-        </Grid>
-        <Grid item xs={5}>
-          <Editor language="json" />
-        </Grid>
-      </Grid>
     </ThemeProvider>
   );
 };

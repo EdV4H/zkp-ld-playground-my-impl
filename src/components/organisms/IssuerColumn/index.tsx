@@ -1,13 +1,23 @@
 import { Key, TextSnippet } from "@mui/icons-material";
 import { Box, Stack } from "@mui/material";
 
+import { InputDocument, IssuerKey } from "../../../types/issuer";
+import { PlaygroundSideModalState } from "../../../types/verifiableCredentials";
 import { LabelAndOverviewCard, VcElementHeader } from "../../molecules";
 
 type Props = {
+  inputDocument: InputDocument;
+  issuerKey: IssuerKey;
   maxWidth?: number;
+  onSelectElement: (elementType: PlaygroundSideModalState) => void;
 };
 
-const IssuerColumn: React.FC<Props> = ({ maxWidth = 500 }) => {
+const IssuerColumn: React.FC<Props> = ({
+  inputDocument,
+  issuerKey,
+  maxWidth = 500,
+  onSelectElement,
+}) => {
   return (
     <Stack spacing={2} sx={{ maxWidth: maxWidth }}>
       <VcElementHeader
@@ -20,17 +30,23 @@ const IssuerColumn: React.FC<Props> = ({ maxWidth = 500 }) => {
       <Box sx={{ px: 3 }}>
         <LabelAndOverviewCard
           title="Input Document"
-          label="Person1"
+          label={inputDocument.id}
           icon={<TextSnippet />}
           maxWidth={maxWidth}
+          onClick={() => {
+            onSelectElement("inputDocument");
+          }}
         />
       </Box>
       <Box sx={{ px: 3 }}>
         <LabelAndOverviewCard
           title="Key"
-          label="did:exmaple:issuer1#bbs-bls-key1"
+          label={issuerKey.id}
           icon={<Key />}
           maxWidth={maxWidth}
+          onClick={() => {
+            onSelectElement("issuerKey");
+          }}
         />
       </Box>
     </Stack>

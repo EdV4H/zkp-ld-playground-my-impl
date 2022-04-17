@@ -13,3 +13,5 @@ export type VerifiableCredentialsElements =
   | "holder"
   | "verifier"
   | "verifiableDataRegistry";
+
+export type PlaygroundSideModalState = "inputDocument" | "issuerKey";
